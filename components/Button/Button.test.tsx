@@ -13,13 +13,9 @@ describe('Button test cases', () => {
 
   it('Check onClick callback', async () => {
     const onClick = jest.fn()
-
     render(<Button onClick={onClick}>Button</Button>)
-
     const element = screen.getByRole('button')
-
     await userEvent.click(element)
-
     expect(onClick).toHaveBeenCalled()
   })
 })
