@@ -26,7 +26,8 @@ export const getColors = (color?: ColorType): SerializedStyles => {
       `
     case 'secondary':
       return css`
-        color: #5e5c64e6;
+        color: #e4ebf5e6;
+        background: #5e5c64e6;
       `
     case 'danger':
       return css`
