@@ -11,12 +11,12 @@ describe('Button test cases', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('Check onClick callback', () => {
+  it('Check onClick callback', async () => {
     const onClick = jest.fn()
     render(<Button onClick={onClick}>Button</Button>)
     const element = screen.getByRole('button')
 
-    userEvent.click(element)
+    await userEvent.click(element)
     expect(onClick).toHaveBeenCalled()
   })
 })
