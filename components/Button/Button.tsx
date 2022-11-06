@@ -1,4 +1,4 @@
-import type { MouseEvent } from 'react'
+import type { FC, MouseEvent } from 'react'
 import styled from '@emotion/styled'
 import { css, SerializedStyles } from '@emotion/react'
 
@@ -15,10 +15,10 @@ export const COLOR = {
 export type ColorType = typeof COLOR[keyof typeof COLOR]
 
 export type Props = {
-  children: string
+  children?: string
   color?: ColorType
   theme?: AppTheme
-  onClick: (event: MouseEvent<HTMLButtonElement>) => void
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void
 }
 
 export const getColors = (theme: AppTheme, color?: ColorType): SerializedStyles => {
@@ -70,3 +70,13 @@ export const Button = styled.button<Props>`
 Button.defaultProps = {
   color: 'primary',
 }
+
+type DefinedButton = Omit<Props, 'color'>
+
+export const PrimaryButton: FC<DefinedButton> = (props) => <Button color="primary" {...props} />
+
+export const SecondaryButton: FC<DefinedButton> = (props) => <Button color="secondary" {...props} />
+
+export const DangerButton: FC<DefinedButton> = (props) => <Button color="danger" {...props} />
+
+export const WarningButton: FC<DefinedButton> = (props) => <Button color="warning" {...props} />
