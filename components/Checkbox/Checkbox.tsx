@@ -38,6 +38,17 @@ const VisiblePart = styled.label<StyledProps>`
   }
 `
 
-export const Checkbox: FC = () => {
-  return <div></div>
+type Props = {
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void
+}
+
+export const Checkbox: FC<Props> = ({ onChange }) => {
+  const { current: fieldId } = useRef(`prefix-${Math.random().toString(16).slice(2)}`)
+
+  return (
+    <Wrapper>
+      <input id={fieldId} type="checkbox" onChange={onChange} />
+      <VisiblePart htmlFor={fieldId}>✔</VisiblePart>
+    </Wrapper>
+  )
 }
